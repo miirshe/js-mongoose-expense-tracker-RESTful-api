@@ -3,8 +3,8 @@ import express from 'express';
 import chalk from "chalk";
 
 // import your files
-import { port } from './config/initial.config.js';
-import connectDB from './config/db.config.js';
+import { port } from './config/initialConfig.js';
+import connectDB from './config/dbConfig.js';
 
 // initializing the app
 const app = express();
