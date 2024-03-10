@@ -1,8 +1,14 @@
 import express from "express";
-import { loginUser, registerUser } from "../controllers/authController.js";
+import {
+  getUser,
+  loginUser,
+  registerUser,
+} from "../controllers/authController.js";
+import auth from "../middlewares/authMiddleware.js";
 
 const authRoutes = express.Router();
 authRoutes.post("/register", registerUser);
 authRoutes.post("/login", loginUser);
+authRoutes.get("/current-user", auth, getUser);
 
 export default authRoutes;
