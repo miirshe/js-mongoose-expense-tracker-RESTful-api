@@ -11,6 +11,11 @@ const categorySchema = Schema(
     budget: {
       type: Number,
     },
+    userId: {
+      type: Schema.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );

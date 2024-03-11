@@ -9,6 +9,6 @@ import auth from "../middlewares/authMiddleware.js";
 const authRoutes = express.Router();
 authRoutes.post("/register", registerUser);
 authRoutes.post("/login", loginUser);
-authRoutes.get("/current-user", auth, getUser);
+authRoutes.get("/", auth, getUser);
 
 export default authRoutes;

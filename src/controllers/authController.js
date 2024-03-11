@@ -34,11 +34,10 @@ export async function loginUser(req, res) {
       return res.status(404).json({ message: "invalid email and password" });
     }
     const payload = { userId: user._id };
-    const token = jwt.sign(payload, jwtSecretKey, { expiresIn: "1hr" });
+    const token = await jwt.sign(payload, jwtSecretKey, { expiresIn: '1hr'});
     res.cookie("authToken", token, {
-      httpOnlt: true,
-      secure: true,
-      sameSite: "strict",
+      httpOnly: true,
+      secure: false,
     });
     return res.status(201).json({ token });
   } catch (error) {

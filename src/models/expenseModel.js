@@ -9,7 +9,11 @@ const expenseSchema = Schema(
       required: true,
       min: 0,
     },
-    date: {
+    startDate: {
+      type: Date,
+      default: () => Date.now(),
+    },
+    endDate: {
       type: Date,
       default: () => Date.now(),
     },
@@ -19,9 +23,14 @@ const expenseSchema = Schema(
     payment: {
       type: String,
     },
-    category_id: {
+    categoryId: {
       type: Schema.ObjectId,
       ref: "Category",
+      required: true,
+    },
+    userId: {
+      type: Schema.ObjectId,
+      ref: "User",
       required: true,
     },
   },

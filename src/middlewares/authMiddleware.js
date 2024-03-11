@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 import { jwtSecretKey } from "../config/initialConfig.js";
 export default function auth(req, res, next) {
-  const token = req.header.Authorization;
+  const token = req.headers.authorization || req.cookies.authToken;
   if (!token) {
-    return res.json({ message: "Authorization  denied" });
+    return res.status(401).json({ message: "Authorization  denied" });
   }
   try {
     const decoded = jwt.verify(token, jwtSecretKey);
