@@ -13,7 +13,7 @@ export async function createCategory(req, res) {
     }
     return sendSuccessResponse(res, "Category successfully created");
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }
 
@@ -36,7 +36,7 @@ export async function updateCategory(req, res) {
     }
     return sendSuccessResponse(res, "Category successfully updated");
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }
 
@@ -49,19 +49,19 @@ export async function deleteCategory(req, res) {
     }
     return sendSuccessResponse(res, "Category successfully deleted");
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }
 
 export async function getCategories(req, res) {
   try {
     const userId = req.userId;
-    const categories = await Category.find({userId}).sort({ name: "desc" });
+    const categories = await Category.find({ userId }).sort({ name: "desc" });
     if (categories.length == 0) {
       return sendErrorResponse(res, "Categories not found");
     }
     return sendSuccessResponse(res, categories);
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }

@@ -5,10 +5,12 @@ import {
   getExpenses,
   updateExpense,
 } from "../controllers/expenseController.js";
+import { validateExpense } from "../middlewares/expenseValidator.js";
+import auth from "../middlewares/authMiddleware.js";
 
 const expenseRoutes = express.Router();
-expenseRoutes.post("/create", createExpense);
-expenseRoutes.put("/update/:id", updateExpense);
+expenseRoutes.post("/create", auth, validateExpense, createExpense);
+expenseRoutes.put("/update/:id", auth, validateExpense, updateExpense);
 expenseRoutes.delete("/delete/:id", deleteExpense);
-expenseRoutes.delete("/", getExpenses);
+expenseRoutes.get("/", auth, getExpenses);
 export default expenseRoutes;

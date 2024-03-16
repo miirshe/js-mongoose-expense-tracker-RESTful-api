@@ -22,7 +22,7 @@ export async function createExpense(req, res) {
     }
     return sendSuccessResponse(res, "Expense successfully created");
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }
 
@@ -49,7 +49,7 @@ export async function updateExpense(req, res) {
     }
     return sendSuccessResponse(res, "Expense successfully updated");
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }
 
@@ -63,7 +63,7 @@ export async function deleteExpense(req, res) {
     }
     return sendSuccessResponse(res, "Expense successfully delete");
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }
 
@@ -76,6 +76,6 @@ export async function getExpenses(req, res) {
     }
     return sendSuccessResponse(res, expenses);
   } catch (error) {
-    return sendErrorResponse(res, error);
+    return res.status(500).json({ message: error });
   }
 }

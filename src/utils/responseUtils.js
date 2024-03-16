@@ -3,5 +3,5 @@ export function sendSuccessResponse(res, data) {
 }
 
 export function sendErrorResponse(res, data) {
-  return res.status(500).json({ data });
+  return res.status(404).json({ data });
 }
